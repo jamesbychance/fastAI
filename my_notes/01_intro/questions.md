@@ -28,9 +28,10 @@ What term do we normally use in deep learning for what Samuel called "weights"?
 Draw a picture that summarises Samuel's view of a machine learning model.
 
 ```mermaid
-    [Inputs] ---> |
-                    M[Model]--> R[Results]
-    [Weights] --> |
+flowchart LR
+    I1[Inputs] --> M[Model]
+    I2[Weights] --> M
+    M --> R[Results]
 ```
 
 Why is it hard to understand why a deep learning model makes a particular prediction?
