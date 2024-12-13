@@ -51,7 +51,60 @@ git pull origin my-course-notes
 git stash pop
 ```
 
+# Pushing Local Changes to GitHub
 
+## Basic Push Workflow
+
+1. Check which files you've modified:
+```bash
+git status
+```
+
+2. Stage your changes (add files to be committed):
+```bash
+# Add specific file:
+git add path/to/your/file
+
+# Or add all changed files:
+git add .
+```
+
+3. Commit your changes with a descriptive message:
+```bash
+git commit -m "Brief description of what you changed"
+```
+
+4. Push to your GitHub branch:
+```bash
+git push origin my-course-notes
+```
+
+## Common Scenarios
+
+### If Push Is Rejected
+This usually means changes exist on GitHub that you don't have locally. Solve by:
+
+1. Pull the latest changes first:
+```bash
+git pull origin my-course-notes
+```
+
+2. Then push your changes:
+```bash
+git push origin my-course-notes
+```
+
+### Verifying Your Push
+
+After pushing, you can verify your changes were pushed by:
+
+1. Checking your repository on GitHub
+2. Or using git log to see your latest commit:
+```bash
+git log --oneline -1
+```
+
+# Previous version of help for github
 
 ## Repository Setup and Best Practices
 
