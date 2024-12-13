@@ -1,7 +1,3 @@
-# Managing FastAI Course Notes on GitHub
-
-## Working with the repository and managing updates
-
 # Syncing Your Local FastAI Repository with GitHub
 
 ## Daily Start-up Routine
