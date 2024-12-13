@@ -1,5 +1,58 @@
 # Managing FastAI Course Notes on GitHub
 
+## Working with the repository and managing updates
+
+# Syncing Your Local FastAI Repository with GitHub
+
+## Daily Start-up Routine
+
+1. Navigate to your repository:
+```bash
+cd ~/courses/fastAI
+```
+
+2. Check you're on your notes branch:
+```bash
+git checkout my-course-notes
+```
+
+3. Pull the latest changes from GitHub:
+```bash
+git pull origin my-course-notes
+```
+
+## Useful Status Commands
+
+Check your current branch:
+```bash
+git branch
+```
+
+Check if any files are modified or out of sync:
+```bash
+git status
+```
+
+## Common Issues and Solutions
+
+If you get errors about uncommitted changes:
+1. Save your current work:
+```bash
+git stash
+```
+
+2. Pull the updates:
+```bash
+git pull origin my-course-notes
+```
+
+3. Reapply your saved work:
+```bash
+git stash pop
+```
+
+
+
 ## Repository Setup and Best Practices
 
 ### Initial Setup
