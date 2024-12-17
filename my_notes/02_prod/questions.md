@@ -1,7 +1,7 @@
 # Questions - Lecture 2 - Production
 
 Provide an example of where the bear classification model might work poorly in production, due to structural or style differences in the training data.
-> fdsfa
+> missmatched sized images, trained on images that don't fully represent all possible images of a real life bear
 
 Where do text models currently have a major deficiency?
 > Text models can currently very convincingly respond to social media posts and chat in the common vernacular, in some cases more convincingly better than actual human generated responses. However, their major deficiency is that they are limited on how well they can be trainied to provide text responses within specified knowledge domains, for example, training a model on all medical texts does not lead to a model that can provide accurate medical advice. In fact, the medical advice it provides could use dangerously convincing jargon to the layman, but the advice itself would be medically dangerous (cause harm). 
@@ -35,67 +35,89 @@ Create an image recognition model using data you curate, and deploy it on the we
 > dasfasdf
 
 What is DataLoaders?
-> gfgfds
+> DataLoaders is a thin class that just stores whatever DataLoader objects you pass to it, and makes them available as train and valid. Although it's a very simple class, it's very important in fastai: it provides the data for your model. 
+
+> DataLoaders: A fastai class that stores multiple DataLoader objects you pass to it, normally a train and a valid, although it's possible to have as many as you like. The first two are made available as properties.
 
 What four things do we need to tell fastai to create DataLoaders?
-> fdsafsda
+> To turn our downloaded data into a DataLoaders object we need to tell fastai at least four things:
+>
+> - What kinds of data we are working with
+> - How to get the list of items
+> - How to label these items
+> - How to create the validation set
 
 What does the splitter parameter to DataBlock do?
-> gasdfsa
+> to split our training and validation sets randomly.
 
 How do we ensure a random split always gives the same validation set?
-> gddfsdas 
+> we manually type in a number and leave that same number as the seed to ensure the same results (the same images are split from the source list into test and validation sets)
 
 What letters are often used to signify the independent and dependent variables?
-> fedafasdf
+> The independent variable is often referred to as x and the dependent variable is often referred to as y. 
 
 What's the difference between the crop, pad, and squish resize approaches? When might you choose one over the others?
-> fdasfdasf
+> Crop truncates part of input images so the outputs are the same size. Pad adds black bands on images to make them the same size as other images. Squish distorts images, squishing some images down to match the shape of others in the set. You would be better off, so as not to distort images too much or have useless black padding that needlessly consumes compute.
 
 What is data augmentation? Why is it needed?
-> fdasfag
+> Data augmentation refers to creating random variations of our input data, such that they appear different, but do not actually change the meaning of the data. Examples of common data augmentation techniques for images are rotation, flipping, perspective warping, brightness changes and contrast changes. 
+> It is needed 
 
 What is the difference between item_tfms and batch_tfms?
-> fdsafasf
+> Item transforms are applied to individual images (like resizing), while batch transforms are applied to groups of images simultaneously (like augmentation) and can use GPU acceleration
 
 What is a confusion matrix?
-> gdfgf
+> A table that shows how many times a model made correct and incorrect predictions for each category, helping visualize where the model makes mistakes.
 
 What does export save?
-> gfdgrg
+> Export saves the model architecture, trained parameters, and DataLoader settings all in one file for easy deployment.
 
 What is it called when we use a model for getting predictions, instead of training?
-> fgfdgr
+> This is called inference.
 
 What are IPython widgets?
-> fdsaf
+> Interactive GUI components that can be used in Jupyter notebooks to create user interfaces.
 
 When might you want to use CPU for deployment? When might GPU be better?
-> fdsafgasd
+> Use CPU when serving one prediction at a time to individual users (cheaper, simpler). Use GPU when processing many predictions simultaneously or need very fast processing.
 
 What are the downsides of deploying your app to a server, instead of to a client (or edge) device such as a phone or PC?
-> gsdffad
+> - Requires internet connection
+> - Added latency from network
+> - Privacy concerns with sending data to server
+> - Costs for server maintenance
 
 What are three examples of problems that could occur when rolling out a bear warning system in practice?
-> gdfdsa
+> - Poor performance in low light/nighttime
+> - Difficulty with partially hidden bears
+> - Camera quality and resolution issues
+> - Bears in unusual positions not seen in training
 
 What is "out-of-domain data"?
-> gsdaf
+> Data that's different from what the model was trained on (like nighttime images when trained only on daytime ones).
 
 What is "domain shift"?
-> fdsaf
+> When the type of data the model sees gradually changes over time from what it was trained on.
 
 What are the three steps in the deployment process?
-> fsdaga
+> 1. Run model in parallel with manual process
+> 2. Limited trial with human supervision
+> 3. Gradual expansion with monitoring
 
 Consider how the Drivetrain Approach maps to a project or problem you're interested in.
-> fdsafsd
+> The objective is to automatically track and quantify individual athletes' movements during group workouts where everyone performs the same structured workout (like 5x5 deadlifts) within defined time windows, but at their own pace within those windows. 
+> The key levers we control are the wearable's sensors, their placement, and our knowledge of both the workout structure and time windows (e.g., that everyone is doing deadlifts somewhere within each 2-minute window). > We need time-series motion data from athletes performing these movements within the structured time blocks, including data on how different athletes naturally pace their sets and rest periods while still following the overall workout timing. 
+> The models will need to handle movement classification and rep counting for each athlete individually, while using the known workout schedule and time windows as a context layer to improve accuracy, understanding that while everyone is doing the same movement pattern, they won't be perfectly synchronized.
 
 When might it be best to avoid certain types of data augmentation?
-> fdsafasd
+> Avoid data augmentation when it creates unrealistic scenarios that would never occur in real usage - like flipping medical images or distorting text that needs to be read.
 
 For a project you're interested in applying deep learning to, consider the thought experiment "What would happen if it went really, really well?"
-> fdafd
+> • The wearable would completely transform how we interact with technology by mastering nuanced movement recognition - starting with complex gym movements like clean and jerks, and evolving into a new form of precise human-computer interface
+
+> • Success in the initial strength training market would prove that wearables can understand and respond to sophisticated human movements without any manual input, shifting us from "telling" devices what we're doing to "showing" them
+
+> • The technology could scale from dominating the niche fitness market to revolutionizing how the general population interacts with computers and devices, using movement as a natural, frictionless input method
 
 Start a blog, and write your first blog post. For instance, write about what you think deep learning might be useful for in a domain you're interested in.
-> fdafsd
+> ok will do...
