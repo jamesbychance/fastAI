@@ -103,9 +103,10 @@ What are the three steps in the deployment process?
 > 3. Gradual expansion with monitoring
 
 Consider how the Drivetrain Approach maps to a project or problem you're interested in.
-> The objective is to automatically track and quantify individual athletes' movements during group workouts where everyone performs the same structured workout (like 5x5 deadlifts) within defined time windows, but at their own pace within those windows. 
-> The key levers we control are the wearable's sensors, their placement, and our knowledge of both the workout structure and time windows (e.g., that everyone is doing deadlifts somewhere within each 2-minute window). > We need time-series motion data from athletes performing these movements within the structured time blocks, including data on how different athletes naturally pace their sets and rest periods while still following the overall workout timing. 
-> The models will need to handle movement classification and rep counting for each athlete individually, while using the known workout schedule and time windows as a context layer to improve accuracy, understanding that while everyone is doing the same movement pattern, they won't be perfectly synchronised.
+> - The objective is to automatically track and quantify individual athletes' movements during group workouts where everyone performs the same structured workout (like 5x5 deadlifts) within defined time windows, but at their own pace within those windows. 
+> - The key levers we control are the wearable's sensors, their placement, and our knowledge of both the workout structure and time windows (e.g., that everyone is doing deadlifts somewhere within each 2-minute window).
+> - We need time-series motion data from athletes performing these movements within the structured time blocks, including data on how different athletes naturally pace their sets and rest periods while still following the overall workout timing.
+> - The models will need to handle movement classification and rep counting for each athlete individually, while using the known workout schedule and time windows as a context layer to improve accuracy, understanding that while everyone is doing the same movement pattern, they won't be perfectly synchronised.
 
 When might it be best to avoid certain types of data augmentation?
 > Avoid data augmentation when it creates unrealistic scenarios that would never occur in real usage - like flipping medical images or distorting text that needs to be read.
