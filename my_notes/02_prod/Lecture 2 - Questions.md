@@ -28,16 +28,14 @@ How do the steps of the Drivetrain Approach map to a recommendation system?
 > The objective of a recommendation engine is to drive additional sales by surprising and delighting the customer with recommendations of items they would not have purchased without the recommendation. 
 > The lever is the ranking of the recommendations. 
 > New data must be collected to generate recommendations that will cause new sales. 
-> This will require conducting many randomized experiments in order to collect data about a wide range of recommendations for a wide range of customers. 
-> This is a step that few organizations take; but without it, you don't have the information you need to actually optimise recommendations based on your true objective (more sales!).
+> This will require conducting many randomised experiments in order to collect data about a wide range of recommendations for a wide range of customers. 
+> This is a step that few organisations take; but without it, you don't have the information you need to actually optimise recommendations based on your true objective (more sales!).
 
 Create an image recognition model using data you curate, and deploy it on the web.
-> dasfasdf
+> yes, will do
 
 What is DataLoaders?
-> DataLoaders is a thin class that just stores whatever DataLoader objects you pass to it, and makes them available as train and valid. Although it's a very simple class, it's very important in fastai: it provides the data for your model. 
-
-> DataLoaders: A fastai class that stores multiple DataLoader objects you pass to it, normally a train and a valid, although it's possible to have as many as you like. The first two are made available as properties.
+> FastAI's DataLoader is a specialised tool that helps machine learning models efficiently process large amounts of data. Think of it like a smart conveyor belt in a factory - instead of trying to process all the data at once, it breaks it down into manageable chunks (called batches) and feeds them into the model one at a time. This not only makes the learning process more efficient but also helps the computer manage its memory better. The DataLoader can do several helpful things automatically: it can shuffle the data (like mixing up flashcards before studying), process multiple chunks at the same time (like having several conveyor belts working in parallel), and customize how the data is prepared before being fed to the model. While it's built on top of a similar tool from PyTorch (another popular machine learning framework), FastAI's version adds extra features to make it more flexible and easier to use.
 
 What four things do we need to tell fastai to create DataLoaders?
 > To turn our downloaded data into a DataLoaders object we need to tell fastai at least four things:
@@ -64,7 +62,7 @@ What is data augmentation? Why is it needed?
 > It is needed 
 
 What is the difference between item_tfms and batch_tfms?
-> Item transforms are applied to individual images (like resizing), while batch transforms are applied to groups of images simultaneously (like augmentation) and can use GPU acceleration
+> Item transforms are applied to individual images (like resising), while batch transforms are applied to groups of images simultaneously (like augmentation) and can use GPU acceleration
 
 What is a confusion matrix?
 > A table that shows how many times a model made correct and incorrect predictions for each category, helping visualize where the model makes mistakes.
@@ -107,7 +105,7 @@ What are the three steps in the deployment process?
 Consider how the Drivetrain Approach maps to a project or problem you're interested in.
 > The objective is to automatically track and quantify individual athletes' movements during group workouts where everyone performs the same structured workout (like 5x5 deadlifts) within defined time windows, but at their own pace within those windows. 
 > The key levers we control are the wearable's sensors, their placement, and our knowledge of both the workout structure and time windows (e.g., that everyone is doing deadlifts somewhere within each 2-minute window). > We need time-series motion data from athletes performing these movements within the structured time blocks, including data on how different athletes naturally pace their sets and rest periods while still following the overall workout timing. 
-> The models will need to handle movement classification and rep counting for each athlete individually, while using the known workout schedule and time windows as a context layer to improve accuracy, understanding that while everyone is doing the same movement pattern, they won't be perfectly synchronized.
+> The models will need to handle movement classification and rep counting for each athlete individually, while using the known workout schedule and time windows as a context layer to improve accuracy, understanding that while everyone is doing the same movement pattern, they won't be perfectly synchronised.
 
 When might it be best to avoid certain types of data augmentation?
 > Avoid data augmentation when it creates unrealistic scenarios that would never occur in real usage - like flipping medical images or distorting text that needs to be read.
