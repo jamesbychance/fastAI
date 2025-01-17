@@ -162,10 +162,53 @@ def process_workout(file_path, output_dir):
     print(f"HR range: {df['heart_rate'].min():.0f} - {df['heart_rate'].max():.0f} bpm")
 
 def main():
-    file_path = input("Enter the path to your .fit file: ")
-    output_dir = Path("processed_images")
+    """
+    Main function with enhanced user prompting for data selection
+    CC: Concurrent Training (first 45 min)
+    GAC: Graded Active Controls (last 45 min)
+    """
+    print("\nHeart Rate Data Processor")
+    print("--------------------------")
     
+    # Get file path
+    file_path = input("Enter the path to your .fit file: ")
+    
+    # Get training type preference
+    while True:
+        print("\nPlease select the training type:")
+        print("1. CC - CardioClub (first 45 minutes)")
+        print("2. GAC - GeneralAthleticConditioning (last 45 minutes)")
+        choice = input("\nEnter your choice (1 or 2): ").strip()
+        
+        if choice in ['1', '2']:
+            take_last = (choice == '2')
+            training_type = "GAC" if take_last else "CC"
+            break
+        print("Invalid choice. Please enter 1 for CC or 2 for GAC.")
+    
+    # Create output directory with training type
+    output_dir = Path(f"single_processed_images_{training_type}")
+    
+    # Confirm selection with user
+    print(f"\nYou've selected: {training_type}")
+    print(f"{'Last' if take_last else 'First'} 45 minutes will be processed")
+    print(f"Output directory: {output_dir}")
+    
+    confirm = input("\nProceed with processing? (y/n): ").strip().lower()
+    if confirm != 'y':
+        print("Processing cancelled.")
+        return
+    
+    # Process the workout
     process_workout(file_path, output_dir)
+    
+    print("\nProcessing complete!")
+
+# def main():
+#     file_path = input("Enter the path to your .fit file: ")
+#     output_dir = Path("single_processed_images")
+    
+#     process_workout(file_path, output_dir)
 
 if __name__ == "__main__":
     main()

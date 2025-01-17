@@ -5,7 +5,6 @@ from scipy import signal
 from pathlib import Path
 import pandas as pd
 
-# [Previous helper functions remain the same]
 def save_exact_size_image(data, output_path, size=(224, 224)):
     """Save image with exact pixel dimensions"""
     dpi = 100
@@ -218,9 +217,9 @@ def main():
         print("Invalid folder path. Please try again.")
     
     # Get output directory
-    output_dir = input("Enter the path for output directory (default: 'processed_images'): ").strip()
+    output_dir = input("Enter the path for output directory (default: 'batch_processed_images'): ").strip()
     if not output_dir:
-        output_dir = "processed_images"
+        output_dir = "batch_processed_images"
     
     # Get processing preference
     while True:
