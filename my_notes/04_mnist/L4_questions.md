@@ -174,10 +174,19 @@ MNIST_SAMPLE/
 > From a 28x28 pixel image, it's learning a complex decision boundary in 784-dimensional space that separates different digits. What makes SGD powerful is its ability to simultaneously adjust all 784 weights to minimize errors across thousands of training examples, finding patterns our brains cannot consciously perceive in such high-dimensional data.
 
 ### 13. **Why does SGD use mini-batches?**
-   - Answer
+> Uses randomly selected subsets of data (mini-batches) instead of the entire dataset for each update, making it 'stochastic'. Three key reasons are efficiency, stability, and generalisation.
 
 ### 14. **What are the seven steps in SGD for machine learning?**
-   - Answer
+> The seven steps in SGD for machine learning are:
+> i. Initialize the weights (usually randomly)
+> ii. Predict (forward pass) - use current weights to make predictions
+> iii. Calculate loss - measure how wrong the predictions are
+> iv. Calculate gradients - compute how changing each weight would affect the loss
+> v. Step (update) the weights based on the gradients and learning rate
+> vi. Repeat steps 2-5 for multiple batches/epochs
+> vii. Stop when the model is good enough or you run out of time/patience
+>
+> These steps form the fundamental training loop for virtually all deep learning models, from simple linear classifiers to complex neural networks.
 
 ### 15. **How do we initialize the weights in a model?**
    - Answer
