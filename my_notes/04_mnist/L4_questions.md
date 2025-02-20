@@ -85,9 +85,6 @@ MNIST_SAMPLE/
 > - Shape (32, 28, 28) → rank 3
 
 ### 7. **What are RMSE and L1 norm?**
-   - Answer
-
-### 8. **How can you apply a calculation on thousands of numbers at once, many thousands of times faster than a Python loop?**
 > RMSE (Root Mean Square Error):
 > - Formula: √(mean(squared errors))
 > - Process: Calculate the difference between predicted and actual values; square those differences; take the mean of those squared differences and; take the square root of that mean
@@ -97,6 +94,17 @@ MNIST_SAMPLE/
 > - Formula: mean(|errors|)
 > - Process: Calculate the difference between predicted and actual values; take the absolute value of those differences (make them positive) and; take the mean of those absolute differences
 > - In math notation: L1 = 1/n · Σ|yi - ŷi|
+
+### 8. **How can you apply a calculation on thousands of numbers at once, many thousands of times faster than a Python loop?**
+> Using vectorised operations through NumPy arrays or PyTorch tensors, which leverage broadcasting and are implemented in low-level languages like C/C++.
+> Think of vectorized operations like this: Instead of cutting 1,000 apples one-by-one (Python loop), you place all apples on a special cutting board with 1,000 helpers who cut all apples simultaneously (vectorized operation).
+> When you write ```result = my_array * 2```, you're telling the computer to multiply ALL numbers by 2 at once, not one at a time.
+> This works because:
+> - Broadcasting automatically handles different-shaped arrays
+> - Low-level implementation runs optimized C/CUDA code behind the scenes
+> - Parallel processing uses specialised hardware to perform many calculations simultaneously
+> This approach is essential for deep learning, as it's what makes training neural networks feasible rather than taking years to complete.
+
 
 ### 9. **Create a 3×3 tensor or array containing the numbers from 1 to 9. Double it. Select the bottom-right four numbers.**
 > A 3x3 tensor/array...
