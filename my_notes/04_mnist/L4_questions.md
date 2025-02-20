@@ -171,7 +171,7 @@ MNIST_SAMPLE/
 >
 > This process gradually sculpts the weights to highlight important pixel patterns - giving more weight to distinctive features like the top line of a "7" or curves of a "3". Through thousands of small adjustments, SGD finds the optimal weight configuration that best distinguishes between digits.
 >
-> From a 28x28 pixel image, it's learning a complex decision boundary in 784-dimensional space that separates different digits.
+> From a 28x28 pixel image, it's learning a complex decision boundary in 784-dimensional space that separates different digits. What makes SGD powerful is its ability to simultaneously adjust all 784 weights to minimize errors across thousands of training examples, finding patterns our brains cannot consciously perceive in such high-dimensional data.
 
 ### 13. **Why does SGD use mini-batches?**
    - Answer
