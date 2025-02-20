@@ -1,4 +1,4 @@
-# Lecture 4: Mnist Dataset
+# Lecture 4: MNIST Dataset
 
 ## Questions and Answers
 
