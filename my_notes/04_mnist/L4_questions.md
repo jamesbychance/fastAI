@@ -45,8 +45,9 @@ MNIST_SAMPLE/
 
 ### 4. **What is a list comprehension? Create one now that selects odd numbers from a list and doubles them.**
    > A list comprehension is a concise way to create a new list by applying an expression to each item in an existing list, often with a filter condition.
-It has the form: ```[expression for item in iterable if condition]```
-```[number * 2 for number in my_list if number % 2 !=0]```
+> It has the form:
+> ```[expression for item in iterable if condition]```
+> ```[number * 2 for number in my_list if number % 2 !=0]```
 
 ### 5. **What is a "rank-3 tensor"?**
    - Answer
