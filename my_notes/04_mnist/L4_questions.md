@@ -220,22 +220,22 @@ MNIST_SAMPLE/
 
 ### 19. **Do you need to know how to calculate gradients yourself?**
 > Nope, but it does help! There are numerous Python packages that can calculate gradients for us. For example, with PyTorch:
-```
-# 1. Create a tensor and tell PyTorch to track gradients for it
-x = torch.tensor([2.0, 3.0, 4.0], requires_grad=True)
-
-# 2. Perform calculations using this tensor
-y = x**2 + 2*x + 1  # some function
-
-# 3. Calculate the sum or mean to get a scalar output
-loss = y.mean()
-
-# 4. Calculate gradients with respect to x
-loss.backward()
-
-# 5. Access the gradients
-print(x.grad)  # Shows how loss changes when x changes
-```
+> ```
+> # 1. Create a tensor and tell PyTorch to track gradients for it
+> x = torch.tensor([2.0, 3.0, 4.0], requires_grad=True)
+> 
+> # 2. Perform calculations using this tensor
+> y = x**2 + 2*x + 1  # some function
+> 
+> # 3. Calculate the sum or mean to get a scalar output
+> loss = y.mean()
+> 
+> # 4. Calculate gradients with respect to x
+> loss.backward()
+> 
+> # 5. Access the gradients
+> print(x.grad)  # Shows how loss changes when x changes
+> ```
 > PyTorch handles all the complex calculus behind the scenes, computing derivatives through any sequence of operations. This makes implementing neural networks much more practical, the data scientist can focus on designing the model rather than working out all the derivatives by hand.
 
 ### 20. **Why can't we use accuracy as a loss function?**
