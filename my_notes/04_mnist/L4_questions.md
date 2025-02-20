@@ -58,7 +58,11 @@ MNIST_SAMPLE/
 > ```
 
 ### 5. **What is a "rank-3 tensor"?**
-   - Answer
+> Tensor ranks describe the number of dimensions or axes:
+   - Rank-0 tensor: scalar (single number, no dimensions)
+   - Rank-1 tensor: vector (1D array, like a list of numbers)
+   - Rank-2 tensor: matrix (2D array, like a table with rows and columns)
+   - Rank-3 tensor: 3D array (like a stack of matrices or a cube of numbers)
 
 ### 6. **What is the difference between tensor rank and shape? How do you get the rank from the shape?**
    - Answer
