@@ -3,16 +3,47 @@
 ## Questions and Answers
 
 ### 1. **How is a grayscale image represented on a computer? How about a color image?**
-   - Answer
+   - For grayscale, an image is represented using a 2D array. Each element (or pixel) is represented using a value from 0 (black) to 255 (white). A colour image is represented using a 3D array, with an added dimension for colour channels. The most common representation is RGB (red, green, blue).
 
 ### 2. **How are the files and folders in the `MNIST_SAMPLE` dataset structured? Why?**
-   - Answer
+   - MNIST_SAMPLE/
+│
+├── train/
+│   ├── 3/
+│   │   ├── 0.png
+│   │   ├── 1.png
+│   │   ├── 2.png
+│   │   ├── ...
+│   │   └── (thousands of images of digit 3)
+│   │
+│   └── 7/
+│       ├── 0.png
+│       ├── 1.png
+│       ├── 2.png
+│       ├── ...
+│       └── (thousands of images of digit 7)
+│
+├── valid/
+│   ├── 3/
+│   │   ├── 0.png
+│   │   ├── 1.png
+│   │   ├── ...
+│   │   └── (hundreds of validation images of digit 3)
+│   │
+│   └── 7/
+│       ├── 0.png
+│       ├── 1.png
+│       ├── ...
+│       └── (hundreds of validation images of digit 7)
+│
+└── labels.csv
 
 ### 3. **Explain how the "pixel similarity" approach to classifying digits works.**
-   - Answer
+   - The pixel similarity approach works by first creating an "ideal" version of each digit through averaging all training examples. For classification, we take a new image and compare it pixel-by-pixel to each ideal digit. At each position, we calculate the difference between pixel values. These differences are summed across all pixels to measure total distance. The ideal digit with the smallest total distance is chosen as the classification. This method treats each image as a point in high-dimensional space where each dimension represents one pixel position.
 
 ### 4. **What is a list comprehension? Create one now that selects odd numbers from a list and doubles them.**
-   - Answer
+   - A list comprehension is a concise way to create a new list by applying an expression to each item in an existing list, often with a filter condition. It has the form: [expression for item in iterable if condition]
+   - [number * 2 for number in my_list if number % 2 !=0]
 
 ### 5. **What is a "rank-3 tensor"?**
    - Answer
