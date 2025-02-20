@@ -290,34 +290,34 @@ MNIST_SAMPLE/
 
 ### 25. **Write pseudocode showing the basic steps taken in each epoch for SGD.**
 > ```
->for epoch in range(num_epochs):
-    # Optional: shuffle the dataset
-    shuffle(data)
-    
-    # Loop through mini-batches
-    for batch in create_mini_batches(data, batch_size):
-        # Get inputs and targets for this batch
-        inputs, targets = batch
-        
-        # 1. Forward pass: compute predictions
-        predictions = model(inputs)
-        
-        # 2. Calculate loss
-        loss = loss_function(predictions, targets)
-        
-        # 3. Compute gradients (backward pass)
-        loss.backward()
-        
-        # 4. Update weights using gradients
-        for param in model.parameters():
-            param.data -= learning_rate * param.grad
-            
-        # 5. Zero gradients for next iteration
-        zero_gradients(model)
-    
-    # Optional: calculate metrics on validation set
-    validation_metrics = evaluate_model(model, validation_data)
-    print(f"Epoch {epoch}: {validation_metrics}")
+> for epoch in range(num_epochs):
+>   # Optional: shuffle the dataset
+>    shuffle(data)
+>    
+>   # Loop through mini-batches
+>   for batch in create_mini_batches(data, batch_size):
+>       # Get inputs and targets for this batch
+>       inputs, targets = batch
+>        
+>       # 1. Forward pass: compute predictions
+>       predictions = model(inputs)
+>       
+>       # 2. Calculate loss
+>       loss = loss_function(predictions, targets)
+>       
+>       # 3. Compute gradients (backward pass)
+>       loss.backward()
+>        
+>       # 4. Update weights using gradients
+>       for param in model.parameters():
+>           param.data -= learning_rate * param.grad
+>            
+>       # 5. Zero gradients for next iteration
+>       zero_gradients(model)
+>  
+>   # Optional: calculate metrics on validation set
+>   validation_metrics = evaluate_model(model, validation_data)
+>   print(f"Epoch {epoch}: {validation_metrics}")
 > ```
 
 ### 26. **Create a function that, if passed two arguments `[1,2,3,4]` and `'abcd'`, returns `[(1, 'a'), (2, 'b'), (3, 'c'), (4, 'd')]`. What is special about that output data structure?**
