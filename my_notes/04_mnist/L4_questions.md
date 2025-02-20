@@ -177,28 +177,46 @@ MNIST_SAMPLE/
 > Uses randomly selected subsets of data (mini-batches) instead of the entire dataset for each update, making it 'stochastic'. Three key reasons are efficiency, stability, and generalisation.
 
 ### 14. **What are the seven steps in SGD for machine learning?**
+
 > The seven steps in SGD for machine learning are:
-> i. Initialize the weights (usually randomly)
-> ii. Predict (forward pass) - use current weights to make predictions
-> iii. Calculate loss - measure how wrong the predictions are
-> iv. Calculate gradients - compute how changing each weight would affect the loss
-> v. Step (update) the weights based on the gradients and learning rate
-> vi. Repeat steps 2-5 for multiple batches/epochs
-> vii. Stop when the model is good enough or you run out of time/patience
+>
+> 1. Initialize the weights (usually randomly)
+> 2. Predict (forward pass) - use current weights to make predictions
+> 3. Calculate loss - measure how wrong the predictions are
+> 4. Calculate gradients - compute how changing each weight would affect the loss
+> 5. Step (update) the weights based on the gradients and learning rate
+> 6. Repeat steps 2-5 for multiple batches/epochs
+> 7. Stop when the model is good enough or you run out of time/patience
 >
 > These steps form the fundamental training loop for virtually all deep learning models, from simple linear classifiers to complex neural networks.
 
 ### 15. **How do we initialize the weights in a model?**
-   - Answer
+> We randomise a weight for each parameter around the value of zero (either positive or negative). A conststant (or bias) is also added but are randomised in a different way (sometimes zero, or small constants etc...)
 
 ### 16. **What is "loss"?**
-   - Answer
+> A loss function is a measure of how wrong the model's predictions are compared to the correct answers. It quantifies the difference between predicted values and target values across a dataset, producing a single number that represents the overall error. The goal of training is to minimise this loss value by adjusting the model's parameters. Different types of problems use different loss functions (like mean squared error or cross-entropy loss).
 
 ### 17. **Why can't we always use a high learning rate?**
-   - Answer
+> A high learning rate causes the model to take steps that are too large during optimisation.
+>
+> This creates several problems:
+> 1. Overshooting - The model jumps past the minimum and lands on the opposite side of the valley
+> 2. Oscillation - Parameters bounce back and forth across the optimal point without converging
+> 3. Divergence - In extreme cases, the loss actually increases with each step, moving further from the solution
+>
+> As illustrated in the chapter's diagrams, when the learning rate is too high, each step can jump to a worse position on the loss curve. Instead of smoothly descending toward the minimum, the training process becomes unstable and may never converge. The ideal learning rate allows the model to make steady progress downhill without these dramatic, counterproductive jumps.
 
 ### 18. **What is a "gradient"?**
-   - Answer
+> A gradient is the vector of partial derivatives of the loss function with respect to each model parameter. It represents:
+> 1. The direction of steepest increase in the loss function at the current parameter values
+> 2. How much each individual parameter affects the loss when changed slightly
+> 3. The slope of the loss surface in multiple dimensions simultaneously
+>
+> In deep learning, we calculate the gradient for every weight and bias. For each parameter, the gradient tells us two crucial things:
+> - Which direction to adjust the parameter (increase or decrease it)
+> - How sensitive the loss is to changes in that parameter
+
+> During SGD, we move parameters in the opposite direction of the gradient (the negative gradient) to decrease the loss most efficiently. For a neural network with millions of parameters, the gradient effectively gives us a "map" showing how to adjust each one to improve our predictions.
 
 ### 19. **Do you need to know how to calculate gradients yourself?**
    - Answer
