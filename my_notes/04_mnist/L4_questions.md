@@ -130,13 +130,40 @@ MNIST_SAMPLE/
 > ```
 
 ### 10. **What is broadcasting?**
-   - Answer
+> Broadcasting is a clever trick that lets you perform operations between arrays of different shapes without having to manually resize them.
+>
+> When we have 100 images of 28×28 pixels and one ideal digit image of 28×28 pixels, the shapes are:
+> - Batch of images: (100, 28, 28)
+> - Ideal digit: (28, 28)
+>
+> These aren't the same shape - the batch has an extra dimension for the 100 different images.
+>
+> Without broadcasting, you'd need to resize the ideal digit to shape (100, 28, 28) by making 100 copies of it. But broadcasting handles this automatically.
+>
+> When you write:
+> ```pythonCopyresult = batch_images - ideal_digit```
+> 
+> Broadcasting virtually expands the (28, 28) ideal digit to (100, 28, 28) by repeating it 100 times, but without actually using extra memory. It's as if the computer is smart enough to say, "I see you want to subtract this single template from each of your 100 images, so I'll apply the same template to each one."
 
 ### 11. **Are metrics generally calculated using the training set, or the validation set? Why?**
-   - Answer
+
+> Metrics are calculated on the validation set because:
+> - We want to measure how well our model generalizes to data it hasn't seen during training
+> - Using the training set would give an overly optimistic view of model performance (since the model has already learned from that data)
+> - The validation set serves as a proxy for how the model will perform on real-world data
+>
+> This is a fundamental principle in machine learning - we always evaluate model performance on data that wasn't used for training to get an honest assessment of how well it will work on new data.
 
 ### 12. **What is SGD?**
-   - Answer
+> SGD stands for Stochastic Gradient Descent. It's an optimization algorithm that:
+>
+> - Takes the derivative (gradient) of the loss function with respect to model parameters
+> - Updates those parameters in the opposite direction of the gradient to minimize the loss
+> - Uses randomly selected subsets of data (mini-batches) instead of the entire dataset for each update, making it 'stochastic'
+> 
+> The 'stochastic' part is crucial - it means we use random samples rather than the whole dataset for each step. This makes training faster and introduces helpful randomness that can avoid getting stuck in local minima.
+>
+> The goal is to iteratively follow the gradient downhill until we reach a minimum where the derivative approaches zero, which represents the optimal model parameters that minimize the loss function.
 
 ### 13. **Why does SGD use mini-batches?**
    - Answer
@@ -156,58 +183,58 @@ MNIST_SAMPLE/
 ### 18. **What is a "gradient"?**
    - Answer
 
-### 18. **Do you need to know how to calculate gradients yourself?**
+### 19. **Do you need to know how to calculate gradients yourself?**
    - Answer
 
-### 18. **Why can't we use accuracy as a loss function?**
+### 20. **Why can't we use accuracy as a loss function?**
    - Answer
 
-### 18. **Draw the sigmoid function. What is special about its shape?**
+### 21. **Draw the sigmoid function. What is special about its shape?**
    - Answer
 
-### 18. **What is the difference between a loss function and a metric?**
+### 22. **What is the difference between a loss function and a metric?**
    - Answer
 
-### 18. **What is the function to calculate new weights using a learning rate?**
+### 23. **What is the function to calculate new weights using a learning rate?**
    - Answer
 
-### 18. **What does the `DataLoader` class do?**
+### 24. **What does the `DataLoader` class do?**
    - Answer
 
 ### 18. **Write pseudocode showing the basic steps taken in each epoch for SGD.**
    - Answer
 
-### 18. **Create a function that, if passed two arguments `[1,2,3,4]` and `'abcd'`, returns `[(1, 'a'), (2, 'b'), (3, 'c'), (4, 'd')]`. What is special about that output data structure?**
+### 25. **Create a function that, if passed two arguments `[1,2,3,4]` and `'abcd'`, returns `[(1, 'a'), (2, 'b'), (3, 'c'), (4, 'd')]`. What is special about that output data structure?**
    - Answer
 
-### 18. **What are the "bias" parameters in a neural network? Why do we need them?**
+### 26. **What are the "bias" parameters in a neural network? Why do we need them?**
    - Answer
 
-### 18. **What does the `@` operator do in Python?**
+### 27. **What does the `@` operator do in Python?**
    - Answer
 
-### 18. **What does the `backward` method do?**
+### 28. **What does the `backward` method do?**
    - Answer
 
-### 18. **Why do we have to zero the gradients?**
+### 29. **Why do we have to zero the gradients?**
    - Answer
 
-### 18. **What information do we have to pass to `Learner`?**
+### 30. **What information do we have to pass to `Learner`?**
    - Answer
 
-### 18. **Show Python or pseudocode for the basic steps of a training loop.**
+### 31. **Show Python or pseudocode for the basic steps of a training loop.**
    - Answer
 
-### 18. **What is "ReLU"? Draw a plot of it for values from `-2` to `+2`.**
+### 32. **What is "ReLU"? Draw a plot of it for values from `-2` to `+2`.**
    - Answer
 
-### 18. **What is an "activation function"?**
+### 33. **What is an "activation function"?**
    - Answer
 
-### 18. **What's the difference between `F.relu` and `nn.ReLU`?**
+### 34. **What's the difference between `F.relu` and `nn.ReLU`?**
    - Answer
 
-### 18. **The universal approximation theorem shows that any function can be approximated as closely as needed using just one nonlinearity. So why do we normally use more?**
+### 35. **The universal approximation theorem shows that any function can be approximated as closely as needed using just one nonlinearity. So why do we normally use more?**
    - Answer
 
 
