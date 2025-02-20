@@ -59,22 +59,63 @@ MNIST_SAMPLE/
 
 ### 5. **What is a "rank-3 tensor"?**
 > Tensor ranks describe the number of dimensions or axes:
-   - Rank-0 tensor: scalar (single number, no dimensions)
-   - Rank-1 tensor: vector (1D array, like a list of numbers)
-   - Rank-2 tensor: matrix (2D array, like a table with rows and columns)
-   - Rank-3 tensor: 3D array (like a stack of matrices or a cube of numbers)
+>   - Rank-0 tensor: scalar (single number, no dimensions)
+>   - Rank-1 tensor: vector (1D array, like a list of numbers)
+>   - Rank-2 tensor: matrix (2D array, like a table with rows and columns)
+>   - Rank-3 tensor: 3D array (like a stack of matrices or a cube of numbers)
+> In the case of the MNIST dataset the batch of greyscale images are rank-3 tensors (batch_size, height, width)
+
 
 ### 6. **What is the difference between tensor rank and shape? How do you get the rank from the shape?**
-   - Answer
+> Rank refers to the number of dimensions or axes a tensor has, while shape describes the size of each dimension.
+> Tensor rank: The number of dimensions (aka the "order" or "degree" of the tensor)
+> - Scalar: rank 0
+> - Vector: rank 1
+> - Matrix: rank 2
+> - 3D array: rank 3
+
+> Tensor shape: A tuple specifying the length of each dimension
+> - Vector of length 5: shape (5,)
+> - 3×4 matrix: shape (3, 4)
+> - Batch of 32 images of size 28×28: shape (32, 28, 28)
+
+> Getting rank from shape: The rank is simply the length of the shape tuple. For example:
+> - Shape (5,) → rank 1
+> - Shape (3, 4) → rank 2
+> - Shape (32, 28, 28) → rank 3
 
 ### 7. **What are RMSE and L1 norm?**
    - Answer
 
 ### 8. **How can you apply a calculation on thousands of numbers at once, many thousands of times faster than a Python loop?**
-   - Answer
+> RMSE (Root Mean Square Error):
+> - Formula: √(mean(squared errors))
+> - Process: Calculate the difference between predicted and actual values; square those differences; take the mean of those squared differences and; take the square root of that mean
+> - In math notation: RMSE = √(1/n · Σ(yi - ŷi)²)
+
+> L1 norm (Mean Absolute Error):
+> - Formula: mean(|errors|)
+> - Process: Calculate the difference between predicted and actual values; take the absolute value of those differences (make them positive) and; take the mean of those absolute differences
+> - In math notation: L1 = 1/n · Σ|yi - ŷi|
 
 ### 9. **Create a 3×3 tensor or array containing the numbers from 1 to 9. Double it. Select the bottom-right four numbers.**
-   - Answer
+> A 3x3 tensor/array...
+> ```
+> [1, 2, 3]
+> [4, 5, 6]
+> [7, 8, 9]
+> ```
+> Double it...
+> ```
+> [2, 4, 6]
+> [8, 10, 12]
+> [14, 16, 18]
+> ```
+> The bottom-right four numbers would mean the 2x2 square (submatrix) in the corner
+> ```
+> [10, 12]
+> [16, 18]
+> ```
 
 ### 10. **What is broadcasting?**
    - Answer
