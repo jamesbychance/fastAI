@@ -155,8 +155,7 @@ MNIST_SAMPLE/
 > This is a fundamental principle in machine learning - we always evaluate model performance on data that wasn't used for training to get an honest assessment of how well it will work on new data.
 
 ### 12. **What is SGD?**
-> SGD stands for Stochastic Gradient Descent. It's an optimization algorithm that:
->
+> SGD stands for Stochastic Gradient Descent. It's an optimisation algorithm that:
 > - Takes the derivative (gradient) of the loss function with respect to model parameters
 > - Updates those parameters in the opposite direction of the gradient to minimize the loss
 > - Uses randomly selected subsets of data (mini-batches) instead of the entire dataset for each update, making it 'stochastic'
@@ -164,6 +163,15 @@ MNIST_SAMPLE/
 > The 'stochastic' part is crucial - it means we use random samples rather than the whole dataset for each step. This makes training faster and introduces helpful randomness that can avoid getting stuck in local minima.
 >
 > The goal is to iteratively follow the gradient downhill until we reach a minimum where the derivative approaches zero, which represents the optimal model parameters that minimize the loss function.
+>
+> SGD optimises neural network digit recognition by iteratively adjusting weights based on prediction errors. For each batch of images, SGD:
+> - Calculates how wrong our predictions are (loss)
+> - Determines how each pixel weight should change to reduce errors (gradients)
+> - Updates all weights slightly in their optimal directions
+>
+> This process gradually sculpts the weights to highlight important pixel patterns - giving more weight to distinctive features like the top line of a "7" or curves of a "3". Through thousands of small adjustments, SGD finds the optimal weight configuration that best distinguishes between digits.
+>
+> From a 28x28 pixel image, it's learning a complex decision boundary in 784-dimensional space that separates different digits.
 
 ### 13. **Why does SGD use mini-batches?**
    - Answer
