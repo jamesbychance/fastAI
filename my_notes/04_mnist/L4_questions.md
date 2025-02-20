@@ -321,7 +321,24 @@ MNIST_SAMPLE/
 > ```
 
 ### 26. **Create a function that, if passed two arguments `[1,2,3,4]` and `'abcd'`, returns `[(1, 'a'), (2, 'b'), (3, 'c'), (4, 'd')]`. What is special about that output data structure?**
-   - Answer
+> Here's a function that creates the requested output:
+> ```
+> def create_pairs(numbers, letters):
+>    return list(zip(numbers, letters)) 
+> ```
+> Example usage:
+> ```
+> result = create_pairs([1,2,3,4], 'abcd')
+> print(result)  # [(1, 'a'), (2, 'b'), (3, 'c'), (4, 'd')]
+> ```
+> What's special about this output data structure is that it creates a list of tuples where each tuple pairs corresponding elements from the two input sequences. This is exactly what the zip function does - it "zips" together multiple iterables element by element.
+>
+> The resulting structure is useful because:
+> 1. It maintains the relationship between corresponding elements
+> 2. It's structured as a list of tuples, which is a common format for datasets where each tuple contains features and target values
+> 3. This matches the structure expected by PyTorch's Dataset class, where each item needs to return an (input, target) pair
+>
+> For deep learning, similar data structures are used to create datasets where each item contains both an input image and its corresponding label.
 
 ### 27. **What are the "bias" parameters in a neural network? Why do we need them?**
    - Answer
