@@ -3,7 +3,7 @@
 ## Questions and Answers
 
 ### 1. **How is a grayscale image represented on a computer? How about a color image?**
-   - For grayscale, an image is represented using a 2D array. Each element (or pixel) is represented using a value from 0 (black) to 255 (white). A colour image is represented using a 3D array, with an added dimension for colour channels. The most common representation is RGB (red, green, blue).
+   > For grayscale, an image is represented using a 2D array. Each element (or pixel) is represented using a value from 0 (black) to 255 (white). A colour image is represented using a 3D array, with an added dimension for colour channels. The most common representation is RGB (red, green, blue).
 
 ### 2. **How are the files and folders in the `MNIST_SAMPLE` dataset structured? Why?**
 ```
