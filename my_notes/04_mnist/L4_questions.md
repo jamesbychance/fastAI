@@ -6,7 +6,8 @@
    - For grayscale, an image is represented using a 2D array. Each element (or pixel) is represented using a value from 0 (black) to 255 (white). A colour image is represented using a 3D array, with an added dimension for colour channels. The most common representation is RGB (red, green, blue).
 
 ### 2. **How are the files and folders in the `MNIST_SAMPLE` dataset structured? Why?**
-   - MNIST_SAMPLE/
+```
+MNIST_SAMPLE/
 │
 ├── train/
 │   ├── 3/
@@ -37,6 +38,7 @@
 │       └── (hundreds of validation images of digit 7)
 │
 └── labels.csv
+```
 
 ### 3. **Explain how the "pixel similarity" approach to classifying digits works.**
    - The pixel similarity approach works by first creating an "ideal" version of each digit through averaging all training examples. For classification, we take a new image and compare it pixel-by-pixel to each ideal digit. At each position, we calculate the difference between pixel values. These differences are summed across all pixels to measure total distance. The ideal digit with the smallest total distance is chosen as the classification. This method treats each image as a point in high-dimensional space where each dimension represents one pixel position.
