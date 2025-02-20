@@ -44,10 +44,18 @@ MNIST_SAMPLE/
    > The pixel similarity approach works by first creating an "ideal" version of each digit through averaging all training examples. For classification, we take a new image and compare it pixel-by-pixel to each ideal digit. At each position, we calculate the difference between pixel values. These differences are summed across all pixels to measure total distance. The ideal digit with the smallest total distance is chosen as the classification. This method treats each image as a point in high-dimensional space where each dimension represents one pixel position.
 
 ### 4. **What is a list comprehension? Create one now that selects odd numbers from a list and doubles them.**
-   > A list comprehension is a concise way to create a new list by applying an expression to each item in an existing list, often with a filter condition.
+
+> A list comprehension is a concise way to create a new list by applying an expression to each item in an existing list, often with a filter condition.
+>
 > It has the form:
-> ```[expression for item in iterable if condition]```
-> ```[number * 2 for number in my_list if number % 2 !=0]```
+> ```
+> [expression for item in iterable if condition]
+> ```
+>
+> Example that selects odd numbers and doubles them:
+> ```
+> [number * 2 for number in my_list if number % 2 != 0]
+> ```
 
 ### 5. **What is a "rank-3 tensor"?**
    - Answer
