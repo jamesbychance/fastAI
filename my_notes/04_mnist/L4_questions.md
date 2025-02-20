@@ -239,54 +239,118 @@ MNIST_SAMPLE/
 > PyTorch handles all the complex calculus behind the scenes, computing derivatives through any sequence of operations. This makes implementing neural networks much more practical, the data scientist can focus on designing the model rather than working out all the derivatives by hand.
 
 ### 20. **Why can't we use accuracy as a loss function?**
-   - Answer
+> Imagine you're training a model to tell apart 3s and 7s. For each image, your model outputs a score between 0 and 1. If it's above 0.5, you call it a "3"; otherwise, it's a "7".
+>
+> The problem with accuracy is that it only cares about whether you're on the right side of 0.5:
+> - If your model says 0.51 for a real "3", that's correct (score: 1)
+> - If your model says 0.99 for a real "3", that's also correct (score: 1)
+> - If your model says 0.49 for a real "3", that's wrong (score: 0)
+>
+> So here's why it breaks:
+>
+> Tiny changes don't matter: If you slightly improve your model's prediction from 0.51 to 0.52 for a "3", the accuracy doesn't change at all.
+>
+> No direction to improve: The gradient tells your model "which way to adjust weights to improve." But with accuracy, the gradient is usually zero because small weight changes rarely flip a prediction across the 0.5 boundary.
 
 ### 21. **Draw the sigmoid function. What is special about its shape?**
-   - Answer
+> The sigmoid function has an S-shaped curve that rises from 0 to 1. What's special about its shape is that it:
+> - Squashes any input value into the range [0,1]
+> - Is smooth and differentiable everywhere
+> - Has a gentle slope that approaches zero at both extremes
+> - Creates a natural threshold at 0.5
+> - Transforms linear inputs into probability-like outputs
 
 ### 22. **What is the difference between a loss function and a metric?**
-   - Answer
+   - A loss function reveals what the model is predicting as compared to the target, its the difference. Further, loss functions are designed to be differentiable to drive the training process. A metric is how the model performs after training using the validation data set, metrics measure what we actually care about (like accuracy) for human understanding.
 
 ### 23. **What is the function to calculate new weights using a learning rate?**
-   - Answer
+> The function to calculate new weights using a learning rate is:
+> ```
+> new_weights = old_weights - learning_rate * gradient
+> ```
+> Or written mathematically:
+> w₍ₙₑₓₜ₎ = w - lr * ∇w
+> 
+> This formula:
+> 1. Takes the current weights
+> 2. Subtracts the product of the learning rate and the gradient
+> 3. The negative sign ensures we move in the direction that reduces the loss
+> 4. Smaller learning rates result in smaller steps
+>
+>This weight update equation is the fundamental operation in gradient descent that allows the model to learn from its errors by incrementally adjusting parameters in the direction that reduces the loss function.
 
 ### 24. **What does the `DataLoader` class do?**
+> The DataLoader class handles the process of:
+> 1. Fetching data in mini-batches from a dataset
+> 2. Shuffling the data for each epoch (if requested)
+> 3. Using multiple workers to load data in parallel (for efficiency)
+> 4. Collating individual samples into batches
+>
+> It converts a dataset (like a collection of images and labels) into an iterable that yields batches of data in the format needed for training. This makes training more efficient by preparing data in the background while the model is computing, and by grouping examples into appropriately sized batches that can be processed together.
+
+### 25. **Write pseudocode showing the basic steps taken in each epoch for SGD.**
+> ```
+>for epoch in range(num_epochs):
+    # Optional: shuffle the dataset
+    shuffle(data)
+    
+    # Loop through mini-batches
+    for batch in create_mini_batches(data, batch_size):
+        # Get inputs and targets for this batch
+        inputs, targets = batch
+        
+        # 1. Forward pass: compute predictions
+        predictions = model(inputs)
+        
+        # 2. Calculate loss
+        loss = loss_function(predictions, targets)
+        
+        # 3. Compute gradients (backward pass)
+        loss.backward()
+        
+        # 4. Update weights using gradients
+        for param in model.parameters():
+            param.data -= learning_rate * param.grad
+            
+        # 5. Zero gradients for next iteration
+        zero_gradients(model)
+    
+    # Optional: calculate metrics on validation set
+    validation_metrics = evaluate_model(model, validation_data)
+    print(f"Epoch {epoch}: {validation_metrics}")
+> ```
+
+### 26. **Create a function that, if passed two arguments `[1,2,3,4]` and `'abcd'`, returns `[(1, 'a'), (2, 'b'), (3, 'c'), (4, 'd')]`. What is special about that output data structure?**
    - Answer
 
-### 18. **Write pseudocode showing the basic steps taken in each epoch for SGD.**
+### 27. **What are the "bias" parameters in a neural network? Why do we need them?**
    - Answer
 
-### 25. **Create a function that, if passed two arguments `[1,2,3,4]` and `'abcd'`, returns `[(1, 'a'), (2, 'b'), (3, 'c'), (4, 'd')]`. What is special about that output data structure?**
+### 28. **What does the `@` operator do in Python?**
    - Answer
 
-### 26. **What are the "bias" parameters in a neural network? Why do we need them?**
+### 29. **What does the `backward` method do?**
    - Answer
 
-### 27. **What does the `@` operator do in Python?**
+### 30. **Why do we have to zero the gradients?**
    - Answer
 
-### 28. **What does the `backward` method do?**
+### 31. **What information do we have to pass to `Learner`?**
    - Answer
 
-### 29. **Why do we have to zero the gradients?**
+### 32. **Show Python or pseudocode for the basic steps of a training loop.**
    - Answer
 
-### 30. **What information do we have to pass to `Learner`?**
+### 33. **What is "ReLU"? Draw a plot of it for values from `-2` to `+2`.**
    - Answer
 
-### 31. **Show Python or pseudocode for the basic steps of a training loop.**
+### 34. **What is an "activation function"?**
    - Answer
 
-### 32. **What is "ReLU"? Draw a plot of it for values from `-2` to `+2`.**
+### 35. **What's the difference between `F.relu` and `nn.ReLU`?**
    - Answer
 
-### 33. **What is an "activation function"?**
-   - Answer
-
-### 34. **What's the difference between `F.relu` and `nn.ReLU`?**
-   - Answer
-
-### 35. **The universal approximation theorem shows that any function can be approximated as closely as needed using just one nonlinearity. So why do we normally use more?**
+### 36. **The universal approximation theorem shows that any function can be approximated as closely as needed using just one nonlinearity. So why do we normally use more?**
    - Answer
 
 
