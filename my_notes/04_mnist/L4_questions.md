@@ -341,13 +341,104 @@ MNIST_SAMPLE/
 > For deep learning, similar data structures are used to create datasets where each item contains both an input image and its corresponding label.
 
 ### 27. **What are the "bias" parameters in a neural network? Why do we need them?**
-   - Answer
+> The bias terms are additional learnable parameters (the 'b' in w*x + b) that allow the model to shift the output up or down regardless of the input. We need them because:
+> 1. Without bias, every output would be forced to go through zero when the input is zero
+> 2. Bias gives the network flexibility to shift activation functions where needed
+> 3. It's like giving each neuron a "default value" or baseline that it can adjust during training
+>
+> Think of it like this: weights determine the slope of the relationship between input and output, while bias determines the baseline or starting point. Without bias, you'd be forcing every relationship to pivot through the origin (0,0), which is too restrictive for most real-world relationships.
+>
+> The chapter shows this when demonstrating that w*x alone isn't flexible enough - adding bias b allows the model to better fit the data.
 
 ### 28. **What does the `@` operator do in Python?**
-   - Answer
+> In this context, the @ operator performs matrix multiplication. For example:
+> ```
+> # If a is a (2,3) matrix and b is a (3,2) matrix
+> result = a @ b  # Matrix multiplication
+> ```
+> This is different from the * operator which performs element-wise multiplication.
+>
+> Your answer refers to decorator syntax (like @property or @classmethod), which is a different use of the @ symbol in Python. While decorators are indeed marked with @, in the context of neural networks and the chapter's discussion, @ is specifically used for matrix multiplication operations between tensors or arrays.
+>
+> Matrix multiplication is a fundamental operation in neural networks, used to multiply input values by weight matrices to compute layer activations.
 
 ### 29. **What does the `backward` method do?**
-   - Answer
+> The `backward()` method performs backpropagation, which calculates the gradients (derivatives) of the loss with respect to each parameter in the model. It works backwards through the layers, calculating how much each parameter contributed to the final loss. These gradients are then stored and used by the optimizer to update the model's parameters during training. The backward pass complements the forward pass (where predictions are calculated) in the training process.
+>
+> For example:
+```mermaid
+flowchart TB
+    classDef forward fill:#e6f3ff,stroke:#4a90e2
+    classDef backward fill:#ffe6e6,stroke:#e24a4a
+    classDef neutral fill:#f0f0f0,stroke:#666
+    
+    subgraph FP[Forward Pass]
+        direction TB
+        I[Input: 0.8]:::forward
+        W1[Weight1: 0.5]:::neutral
+        M1[0.8 * 0.5 = 0.4]:::forward
+        R1[ReLU: 0.4]:::forward
+        W2[Weight2: -0.3]:::neutral
+        M2[0.4 * -0.3 = -0.12]:::forward
+        P[Prediction: -0.12]:::forward
+        T[Target: 1.0]:::neutral
+        L[Loss: 1.25]:::neutral
+    end
+
+    subgraph BP[Backward Pass]
+        direction BT
+        GL[Loss Gradient]:::backward
+        GW2[Gradient W2: 0.4]:::backward
+        GW1[Gradient W1: -0.12]:::backward
+        UW2[Update W2:
+        -0.3 + 0.4 * 0.1
+        = -0.26]:::backward
+        UW1[Update W1:
+        0.5 + -0.12 * 0.1
+        = 0.488]:::backward
+    end
+
+    %% Forward connections
+    I --> M1
+    W1 --> M1
+    M1 --> R1
+    R1 --> M2
+    W2 --> M2
+    M2 --> P
+    P --> L
+    T --> L
+
+    %% Backward connections
+    L --> GL
+    GL --> GW2
+    GL --> GW1
+    GW2 --> UW2
+    GW1 --> UW1
+    
+    %% Connect updates to weights
+    UW2 -..-> W2
+    UW1 -..-> W1
+```
+> This updated diagram shows:
+>
+> Forward Pass (Blue):
+> - Input value (0.8) flows through network
+> - First weight multiplication (0.8 * 0.5 = 0.4)
+> - ReLU activation (keeps 0.4 as it's positive)
+> - Second weight multiplication (0.4 * -0.3 = -0.12)
+> - Final prediction (-0.12)
+> - Compare with target (1.0)
+> - Calculate loss
+>
+> Backward Pass (Red):
+> - Start from the loss
+> - Calculate gradients for each weight
+> - For W2: Shows how much its change affected the final error
+> - For W1: Shows how much its change affected the final error
+> - Calculate new weights using learning rate (0.1)
+> - Update weights with new values
+>
+> The dotted lines show how the calculated updates flow back to modify the original weights. This process repeats for each batch of training data, gradually improving the weights to reduce the overall loss.
 
 ### 30. **Why do we have to zero the gradients?**
    - Answer
