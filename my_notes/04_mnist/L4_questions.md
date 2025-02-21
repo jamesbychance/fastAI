@@ -441,25 +441,120 @@ flowchart TB
 > The dotted lines show how the calculated updates flow back to modify the original weights. This process repeats for each batch of training data, gradually improving the weights to reduce the overall loss.
 
 ### 30. **Why do we have to zero the gradients?**
-   - Answer
+> The gradients must be zeroed before each backward pass because PyTorch accumulates gradients by default. Without zeroing, each backward() call would add new gradients to the existing ones, leading to incorrect updates. Here's a simple example:
+```
+import torch
+
+# Create a simple model
+model = torch.nn.Linear(1, 1)
+
+# First backward pass
+output = model(torch.tensor([2.0]))
+loss = output.pow(2)
+loss.backward()
+print("First gradient:", model.weight.grad)  # Shows initial gradient
+
+# Second backward pass without zeroing
+output = model(torch.tensor([2.0]))
+loss = output.pow(2)
+loss.backward()
+print("Accumulated gradient:", model.weight.grad)  # Shows doubled gradient!
+
+# Zero gradients and do another pass
+model.zero_grad()
+output = model(torch.tensor([2.0]))
+loss = output.pow(2)
+loss.backward()
+print("After zeroing:", model.weight.grad)  # Back to correct gradient
+```
+> This demonstrates why zero_grad() is essential in the training loop.
 
 ### 31. **What information do we have to pass to `Learner`?**
-   - Answer
+> We pass dataloaders, the model, the optimisation function (in this case SDG?),  the loss function, and any metrics we want printed. For example:
+> ```
+> learn = Learner(dls,                    # DataLoaders
+>                 nn.Linear(28*28,1),     # model
+>                 opt_func=SGD,           # optimisation function
+>                 loss_func=mnist_loss,   # loss function
+>                 metrics=batch_accuracy) # metrics to print
+> ```
+> It's worth noting that not all of these are always required - fastai will use sensible defaults if some parameters aren't specified. However, understanding these core components helps explain what a Learner needs to function: something to learn from (DataLoaders), something to learn (model), how to learn (optimiser), what defines success (loss function), and how to measure progress (metrics).
 
 ### 32. **Show Python or pseudocode for the basic steps of a training loop.**
-   - Answer
+> ```
+> # Basic training loop for one epoch
+> def train_epoch(model, lr, params):
+>   for xb, yb in dl:                    # Get batch of data
+>        # Forward pass
+>        preds = model(xb)                # Make predictions
+>        loss = loss_func(preds, yb)      # Calculate loss
+>        
+>        # Backward pass
+>        loss.backward()                   # Calculate gradients
+>        
+>        # Update weights
+>        for p in params:
+>            p.data -= p.grad * lr        # Step (update) parameters
+>            p.grad.zero_()               # Zero gradients for next batch
+>
+> # Run training for multiple epochs
+> def train_model(model, epochs):
+>   for epoch in range(epochs):
+>       train_epoch(model)               # Train for one epoch
+>       acc = validate_epoch(model)      # Check accuracy
+>       print(acc, end=' ')
+> ```
 
 ### 33. **What is "ReLU"? Draw a plot of it for values from `-2` to `+2`.**
-   - Answer
+> ReLU (Rectified Linear Unit) is a simple but effective activation function that returns 0 for any negative input, and returns the input unchanged for any positive value. In code it's simply: max(0, x)
+```mermaid
+xychart-beta
+    title "ReLU Function: f(x) = max(0,x)"
+    x-axis [-2, -1, 0, 1, 2]
+    y-axis [-0.5, 0, 0.5, 1, 1.5, 2]
+    line [[-2,0], [-1,0], [0,0], [1,1], [2,2]]
+```
 
 ### 34. **What is an "activation function"?**
-   - Answer
+> An activation function adds non-linearity to a neural network. Without it, no matter how many layers we add, the network could only learn simple straight-line relationships. Think of it like adding "bends" to the data flow. The most common activation function is ReLU, which is super simple: it just turns negative numbers into zero and leaves positive numbers unchanged. This simple transformation is crucial - it's what allows neural networks to learn complex patterns in data.
+>
+> Example with ReLU:
+> ```
+> # Input: -2, 0.5, 3
+> # After ReLU: 0, 0.5, 3  (negative became 0, positives unchanged)
+> ```
 
 ### 35. **What's the difference between `F.relu` and `nn.ReLU`?**
-   - Answer
+> F.relu is a function that applies ReLU directly, while nn.ReLU is a module (class) that does the same thing. When using nn.Sequential, you must use the module version (nn.ReLU()). Here's a simple example:
+> ```
+> # Function version - use directly
+> output = F.relu(some_values)
+>
+> # Module version - must instantiate first
+> relu_layer = nn.ReLU()
+> output = relu_layer(some_values)
+>
+> # In nn.Sequential you must use the module version
+> model = nn.Sequential(
+>     nn.Linear(28*28,30),
+>     nn.ReLU(),          # Module version
+>     nn.Linear(30,1)
+> )
+> ```
+> The actual effect on the numbers is identical - they both turn negative values to 0 and leave positive values unchanged. The difference is just in how they're used in code.
 
 ### 36. **The universal approximation theorem shows that any function can be approximated as closely as needed using just one nonlinearity. So why do we normally use more?**
-   - Answer
+> While technically one nonlinearity (like ReLU) between two linear layers can approximate any function, in practice using more layers is better because:
+>
+> 1. It's more efficient - you need fewer total parameters to achieve the same result
+> 2. It's faster to train - the model can find good solutions with less computation
+> 3. It often generalizes better - the model tends to work better on new data
+>
+> Think of it like building with LEGOs:
+> - With only 2 big pieces (2 layers), you can eventually make any shape, but you'd need enormous pieces
+> - With many smaller pieces (multiple layers), you can build the same shape more efficiently and probably better
+>
+> This is why modern neural networks usually use many layers - it's not that we can't do it with one nonlinearity, it's that using more makes everything work better in practice.
 
 
 
