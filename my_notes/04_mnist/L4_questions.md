@@ -508,11 +508,26 @@ print("After zeroing:", model.weight.grad)  # Back to correct gradient
 ### 33. **What is "ReLU"? Draw a plot of it for values from `-2` to `+2`.**
 > ReLU (Rectified Linear Unit) is a simple but effective activation function that returns 0 for any negative input, and returns the input unchanged for any positive value. In code it's simply: max(0, x)
 ```mermaid
-xychart-beta
-    title "ReLU Function: f(x) = max(0,x)"
-    x-axis [-2, -1, 0, 1, 2]
-    y-axis [-0.5, 0, 0.5, 1, 1.5, 2]
-    line [[-2,0], [-1,0], [0,0], [1,1], [2,2]]
+flowchart LR
+    style g1 stroke-width:3px,stroke-dasharray: 5 5
+    style g2 stroke-width:3px
+
+    %% Grid lines and annotations
+    subgraph g1[" "]
+        direction TB
+        -2 --- -1 --- 0 --- 1 --- 2
+    end
+    subgraph g2[" "]
+        direction LR
+        -1-->0-->1-->2
+    end
+
+    %% Add labels
+    subgraph labels[" "]
+        direction TB
+        x["x-axis"]
+        y["ReLU(x)"]
+    end
 ```
 
 ### 34. **What is an "activation function"?**
