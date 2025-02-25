@@ -172,6 +172,33 @@ MNIST_SAMPLE/
 > This process gradually sculpts the weights to highlight important pixel patterns - giving more weight to distinctive features like the top line of a "7" or curves of a "3". Through thousands of small adjustments, SGD finds the optimal weight configuration that best distinguishes between digits.
 >
 > From a 28x28 pixel image, it's learning a complex decision boundary in 784-dimensional space that separates different digits. What makes SGD powerful is its ability to simultaneously adjust all 784 weights to minimize errors across thousands of training examples, finding patterns our brains cannot consciously perceive in such high-dimensional data.
+```
+Stochastic Gradient Descent on a 1D Loss Function
+    Loss
+     ↑
+ 35  |    *                                                           *
+     |     \                                                         /
+ 30  |      \                                                       /
+     |       \                                                     /
+ 25  |        \                                                  *
+     |         \                                               /
+ 20  |          \                                           /
+     |           \                                       /
+ 15  |            \                                   *
+     |             \                               /
+ 10  |              \                           *
+     |               \                       /
+  5  |                \                   *
+     |                 \               *
+  0  |                  \_____*_*_*__/
+     |                                
+     +-------------------------------------------------------→ Parameter
+        -6    -4    -2     0     2     4     6
+        
+        --- Loss function (blue)
+        -*-  SGD updates (red)
+``` 
+
 
 ### 13. **Why does SGD use mini-batches?**
 > Uses randomly selected subsets of data (mini-batches) instead of the entire dataset for each update, making it 'stochastic'. Three key reasons are efficiency, stability, and generalisation.
