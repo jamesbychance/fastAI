@@ -174,7 +174,8 @@ MNIST_SAMPLE/
 > From a 28x28 pixel image, it's learning a complex decision boundary in 784-dimensional space that separates different digits. What makes SGD powerful is its ability to simultaneously adjust all 784 weights to minimize errors across thousands of training examples, finding patterns our brains cannot consciously perceive in such high-dimensional data.
 ```
 Stochastic Gradient Descent on a 1D Loss Function
-    Loss
+
+Total Loss (L) Across Training Set
      ↑
  35  |    *                                                           *
      |     \                                                         /
@@ -192,11 +193,11 @@ Stochastic Gradient Descent on a 1D Loss Function
      |                 \               *
   0  |                  \_____*_*_*__/
      |                                
-     +-------------------------------------------------------→ Parameter
-        -6    -4    -2     0     2     4     6
+     +-------------------------------------------------------→ Pixel Position Weight (w) Value
+        -6    -4    -2     0     2     4     6     8     10
         
-        --- Loss function (blue)
-        -*-  SGD updates (red)
+        --- Loss function
+        -*-  SGD updates
 ``` 
 
 
