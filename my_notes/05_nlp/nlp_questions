@@ -1,0 +1,69 @@
+# Lecture 4: Natural Langauge Processing (Book chapter10)
+
+## Questions and Answers
+
+### 1. **What is "self-supervised learning"?**
+   > Answer
+
+### 2. **What is a "language model"?**
+   > Answer
+
+### 3. **Why is a language model considered self-supervised?**
+   > Answer
+
+### 4. **What are self-supervised models usually used for?**
+   > Answer
+
+### 5. **Why do we fine-tune language models?**
+   > Answer
+
+### 6. **What are the three steps to create a state-of-the-art text classifier?**
+   > Answer
+
+### 7. **How do the 50,000 unlabeled movie reviews help us create a better text classifier for the IMDb dataset?**
+   > Answer
+
+### 8. **What are the three steps to prepare your data for a language model?**
+   > Answer
+
+### 9. **What is "tokenization"? Why do we need it?**
+   > Answer
+
+### 10. **Name three different approaches to tokenization.**
+   > Answer
+
+### 11. **What is xxbos?**
+   > Answer
+
+### 12. **List four rules that fastai applies to text during tokenization.**
+   > Answer
+
+### 13. **Why are repeated characters replaced with a token showing the number of repetitions and the character that's repeated?**
+   > Answer
+
+### 14. **What is "numericalization"?**
+   > Answer
+
+### 15. **Why might there be words that are replaced with the "unknown word" token?**
+   > Answer
+
+### 16. **With a batch size of 64, the first row of the tensor representing the first batch contains the first 64 tokens for the dataset. What does the second row of that tensor contain? What does the first row of the second batch contain? (Careful—students often get this one wrong! Be sure to check your answer on the book's website.)**
+   > Answer
+
+### 17. **Why do we need padding for text classification? Why don't we need it for language modeling?**
+   > Answer
+
+### 18. **What does an embedding matrix for NLP contain? What is its shape?**
+   > Answer
+
+### 19. **What is "perplexity"?**
+   > Answer
+
+### 20. **Why do we have to pass the vocabulary of the language model to the classifier data block?**
+   > Answer
+
+### 21. **What is "gradual unfreezing"?**
+   > Answer
+
+### 22. **Why is text generation always likely to be ahead of automatic identification of machine-generated texts?**
+   > Answer
