@@ -67,3 +67,9 @@
 
 ### 22. **Why is text generation always likely to be ahead of automatic identification of machine-generated texts?**
    > Answer
+
+## Further research
+
+### a. See what you can learn about language models and disinformation. What are the best language models today? Take a look at some of their outputs. Do you find them convincing? How could a bad actor best use such a model to create conflict and uncertainty?
+
+### b. Given the limitation that models are unlikely to be able to consistently recognize machine-generated texts, what other approaches may be needed to handle large-scale disinformation campaigns that leverage deep learning?
