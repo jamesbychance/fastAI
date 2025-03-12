@@ -53,10 +53,20 @@
    > Example: deciding how to split "don't" into appropriate tokens.
 
 ### 10. **Name three different approaches to tokenization.**
-   > Answer
+   > Word-based: Splits text on spaces and applies language rules to separate meaningful parts without spaces (like "don't" → "do n't"). Punctuation typically becomes separate tokens.
+   > Subword-based: Divides words into smaller common parts based on frequency (e.g., "occasion" → "o c ca sion"). This handles rare words better and reduces vocabulary size.
+   > Character-based: Breaks text into individual characters, creating the smallest possible tokens. Works well for languages without clear word boundaries.
 
 ### 11. **What is xxbos?**
-   > Answer
+   > "xxbos" is a special token meaning "beginning of stream" that marks the start of a new text document. 
+   > It signals the model to reset context and recognize document boundaries when processing concatenated texts. 
+   > Each context window begins at an "xxbos" token, establishing where the model should start considering text for its predictions while ignoring content from previous documents.
+   > ```
+   > Note:
+   >    xxbos:: Indicates the beginning of a text (here, a review)
+   >    xxmaj:: Indicates the next word begins with a capital (since we lowercased everything)
+   >    xxunk:: Indicates the word is unknown
+   > ```
 
 ### 12. **List four rules that fastai applies to text during tokenization.**
    > Answer
