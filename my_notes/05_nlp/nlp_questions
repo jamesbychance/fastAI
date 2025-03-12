@@ -2,6 +2,10 @@
 
 ## Questions and Answers
 
+### 0. **What is a transfer learning problem?**
+   > A transfer learning problem occurs when a model trained on one task is adapted to a different but related task. 
+   > Transfer learning leverages knowledge from a pre-trained model to improve performance on a new task, typically when labeled data is scarce.
+
 ### 1. **What is "self-supervised learning"?**
    > Self-supervised learning: Training a model using labels that are embedded in the independent variable, rather than requiring external labels. 
    > For instance, training a model to predict the next word in a text.
@@ -18,16 +22,22 @@
    > Self-supervised models are used for learning useful representations from unlabeled data by creating supervision signals from the data itself. They're primarily used for pretraining foundation models, reducing dependency on human labels, and enabling effective transfer learning to downstream tasks.
 
 ### 5. **Why do we fine-tune language models?**
-   > Answer
+   > We fine-tune language models because the foundation model has already learned rich representations of language structure and knowledge through self-supervised pretraining. 
+   > This allows us to leverage that general language understanding and adapt it to specific downstream tasks with relatively small amounts of labeled data, achieving better performance more efficiently than training from scratch.
 
 ### 6. **What are the three steps to create a state-of-the-art text classifier?**
-   > Answer
+   > i) Pretrain a language model on general text data (like Wikipedia)
+   > ii) Fine-tune this language model on domain-specific text (like movie reviews)
+   > iii) Fine-tune the resulting model for the classification task with labeled data
 
 ### 7. **How do the 50,000 unlabeled movie reviews help us create a better text classifier for the IMDb dataset?**
-   > Answer
+   > The 50,000 unlabeled movie reviews help us create a better text classifier by allowing us to fine-tune our pretrained language model specifically on movie review language before classification training. 
+   > This domain-specific adaptation helps the model understand review vocabulary and patterns, creating better representations for the sentiment classification task with less labeled data.
 
 ### 8. **What are the three steps to prepare your data for a language model?**
-   > Answer
+   > A pretext task? (something called an autoencoder)
+   > ???
+   > A downstream task?
 
 ### 9. **What is "tokenization"? Why do we need it?**
    > Answer
