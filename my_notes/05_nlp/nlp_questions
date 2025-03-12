@@ -35,12 +35,22 @@
    > This domain-specific adaptation helps the model understand review vocabulary and patterns, creating better representations for the sentiment classification task with less labeled data.
 
 ### 8. **What are the three steps to prepare your data for a language model?**
-   > A pretext task? (something called an autoencoder)
-   > ???
-   > A downstream task?
+   > i) Tokenization: The sentence "what a fat cat" gets split into individual words: ["what", "a", "fat", "cat"]
+   > ii) Numericalization: Each unique word gets assigned a number from a vocabulary:
+   >    "what" → 42
+   >    "a" → 5
+   >    "fat" → 128
+   >    "cat" → 76
+   >    So "what a fat cat" becomes [42, 5, 128, 76]
+   > iii) Language model data loader creation: For training a language model, the input and target are created by offsetting by one word:
+   >    Input: [42, 5, 128] (which is "what a fat")
+   >    Target: [5, 128, 76] (which is "a fat cat")
 
 ### 9. **What is "tokenization"? Why do we need it?**
-   > Answer
+   > Tokenisation is the process of splitting text into smaller units called tokens (words, subwords, or characters).
+   > We need tokenisation because computers require text to be converted into discrete elements for processing.
+   > It helps handle language complexity and creates a structured format machines can work with.
+   > Example: deciding how to split "don't" into appropriate tokens.
 
 ### 10. **Name three different approaches to tokenization.**
    > Answer
