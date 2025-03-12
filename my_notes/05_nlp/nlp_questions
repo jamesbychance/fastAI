@@ -3,16 +3,17 @@
 ## Questions and Answers
 
 ### 1. **What is "self-supervised learning"?**
-   > Answer
+   > Self-supervised learning: Training a model using labels that are embedded in the independent variable, rather than requiring external labels. For instance, training a model to predict the next word in a text.
 
 ### 2. **What is a "language model"?**
-   > Answer
+   > A model that learns to predict the next word of a sentence
 
 ### 3. **Why is a language model considered self-supervised?**
-   > Answer
+   > Language models are self-supervised because they generate their own training signals from unlabeled text - using existing words to predict the next word. 
+   > The data itself provides both the input (context) and the target (next word), eliminating the need for human-labeled data.
 
 ### 4. **What are self-supervised models usually used for?**
-   > Answer
+   > Self-supervised models are used for learning useful representations from unlabeled data by creating supervision signals from the data itself. They're primarily used for pretraining foundation models, reducing dependency on human labels, and enabling effective transfer learning to downstream tasks.
 
 ### 5. **Why do we fine-tune language models?**
    > Answer
