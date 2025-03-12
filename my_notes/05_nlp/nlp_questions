@@ -3,7 +3,9 @@
 ## Questions and Answers
 
 ### 1. **What is "self-supervised learning"?**
-   > Self-supervised learning: Training a model using labels that are embedded in the independent variable, rather than requiring external labels. For instance, training a model to predict the next word in a text.
+   > Self-supervised learning: Training a model using labels that are embedded in the independent variable, rather than requiring external labels. 
+   > For instance, training a model to predict the next word in a text.
+   > This is where we train a model using labels that are naturally part of the input data, rather than requiring separate external labels.
 
 ### 2. **What is a "language model"?**
    > A model that learns to predict the next word of a sentence
