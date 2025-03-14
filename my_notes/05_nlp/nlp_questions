@@ -69,37 +69,81 @@
    > ```
 
 ### 12. **List four rules that fastai applies to text during tokenization.**
-   > Answer
+   > i) Converting all words to lowercase
+   > ii) Adding special tokens like xxbos to mark the beginning of documents
+   > iii) Replacing unknown words with xxunk tokens
+   > iv) Handling contractions by splitting them (e.g., "don't" becomes "do n't")
 
 ### 13. **Why are repeated characters replaced with a token showing the number of repetitions and the character that's repeated?**
-   > Answer
+   > Compress input sequences for efficiency
+   > Help the model generalize better across different repetition lengths
+   > Make patterns explicit rather than requiring the model to learn them
+   > Reduce vocabulary size
 
-### 14. **What is "numericalization"?**
-   > Answer
+### 14. **What is "numericalisation"?**
+   > Numericalisation is the process of converting tokens (words, subwords, or characters) into numerical values that machine learning models can process. 
+   > This involves creating a vocabulary of all unique tokens in the corpus and assigning each token a unique integer ID. 
+   > The resulting sequence of numbers represents the original text in a format that can be fed into neural networks or other computational models.
 
 ### 15. **Why might there be words that are replaced with the "unknown word" token?**
-   > Answer
+   > Words are replaced with the "unknown word" token when they:
+   >    - Don't appear in the training vocabulary
+   >    - Appear too infrequently to be included
+   >    - Exceed vocabulary size limits
+   >    - Contain unusual characters not handled by the tokeniser
 
 ### 16. **With a batch size of 64, the first row of the tensor representing the first batch contains the first 64 tokens for the dataset. What does the second row of that tensor contain? What does the first row of the second batch contain? (Careful—students often get this one wrong! Be sure to check your answer on the book's website.)**
-   > Answer
+   > With a batch size of 64, the second row of the tensor for the first batch contains the first 64 tokens of the second mini-stream (tokens 65-128 of the overall stream). 
+   > The first row of the second batch contains the next 64 tokens after all mini-streams in the first batch have been processed - essentially continuing further along in the concatenated document stream while maintaining the sequential order within each mini-stream.
 
 ### 17. **Why do we need padding for text classification? Why don't we need it for language modeling?**
-   > Answer
+   > For text classification, we need padding because:
+   >    - Input texts have different lengths
+   >    - Neural networks require fixed-size inputs for batch processing
+   >    - We must align sequences to create uniform-shaped tensors
+   > We don't need padding for language modeling because:
+   >    - Language models work with a continuous stream of concatenated texts
+   >    - The data is divided into fixed-size chunks regardless of document boundaries
+   >    - The model processes these consistent-length segments sequentially
+   >    - Document boundaries are marked with special tokens (like xxbos)
+   > This streaming approach means language modeling naturally handles variable-length texts without needing to pad individual documents to the same length.
 
 ### 18. **What does an embedding matrix for NLP contain? What is its shape?**
-   > Answer
+   > An embedding matrix for NLP contains vector representations of each word or token in the vocabulary. Each row corresponds to a unique token, and each column represents one dimension of the embedding space.
+   > The shape of the embedding matrix is:
+   >   - Rows: The number of tokens in the vocabulary (vocab_size)
+   >   - Columns: The dimensionality of the embeddings (embedding_dim)
+   > So if you have a vocabulary of 10,000 words and you're using 300-dimensional embeddings, your embedding matrix would have the shape (10000, 300).
+   > These embeddings transform sparse one-hot encoded word indices into dense, meaningful vectors that capture semantic relationships between words, making them much more useful for neural networks to process.
+   > Note: While we humans think in 3D space because that's what we experience physically, neural networks have no such limitation. They can operate comfortably in hundreds or thousands of dimensions simultaneously, allowing them to capture incredibly subtle relationships between words.
 
 ### 19. **What is "perplexity"?**
-   > Answer
+   > Perplexity is a metric measures how confused a language model is when predicting the next word in a text. 
+   > It's calculated as the exponential of the cross-entropy loss.
+   > Lower perplexity means the model is more confident and accurate in its predictions - it's less "perplexed" by the text. 
+   > Think of it as measuring how many words the model is seriously considering at each prediction point. 
+   > A perplexity of 10 means the model is effectively choosing between about 10 words each time.
 
 ### 20. **Why do we have to pass the vocabulary of the language model to the classifier data block?**
-   > Answer
+   > We need to pass the language model's vocabulary to the classifier data block to ensure consistency. 
+   > This way, both models use exactly the same tokenisation and numericalisation - meaning words are split into the same tokens and assigned the same numeric IDs.
+   > This consistency is crucial because the classifier will use the language model's pretrained embeddings, which are mapped to specific vocabulary IDs. 
+   > If the classifier used a different vocabulary, the embeddings wouldn't align properly, and we'd lose the benefits of transfer learning from the pretrained language model.
 
 ### 21. **What is "gradual unfreezing"?**
-   > Answer
+   > Gradual unfreezing is a fine-tuning technique where you unfreeze the layers of a pretrained neural network one by one, starting from the final layer and working backward.
+   > Instead of updating all model weights at once (which risks catastrophic forgetting of pretrained knowledge), you:
+   >   - Start by only training the final layer while keeping earlier layers frozen
+   >   - Then progressively unfreeze and train earlier layers in subsequent training phases
+   > This approach allows the model to adapt to new data gradually, preserving the valuable representations learned during pretraining while fine-tuning the model for a specific task. 
+   > It's particularly effective for transfer learning in NLP tasks, helping maintain the language understanding from pretraining while adapting to domain-specific patterns.
 
 ### 22. **Why is text generation always likely to be ahead of automatic identification of machine-generated texts?**
-   > Answer
+   > Text generation will likely always stay ahead of detection because generation systems can be specifically trained to avoid patterns that detectors look for.
+   > It's fundamentally easier to create convincing text than to definitively identify machine-generated content. 
+   > As generators improve, they produce text with fewer telltale patterns, making detection increasingly difficult. 
+   > Additionally, generators can be trained to deliberately evade specific detection methods.
+   > This creates an ongoing cat-and-mouse game where each advance in detection is countered by improvements in generation, similar to how cybersecurity and malware constantly evolve against each other.
 
 ## Further research
 
